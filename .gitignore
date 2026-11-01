@@ -1,0 +1,24 @@
+# Secretos y datos locales del servidor (nunca al repositorio)
+server/.env
+server/data/
+*.db
+*.db-shm
+*.db-wal
+
+# Biblioteca de música
+Music/
+
+# Artefactos de compilación de Flutter
+app/build/
+app/.dart_tool/
+app/.flutter-plugins-dependencies
+app/ios/Pods/
+app/ios/Flutter/Generated.xcconfig
+app/ios/Flutter/flutter_export_environment.sh
+app/android/local.properties
+app/.idea/
+*.iml
+
+# Sistema
+Thumbs.db
+desktop.ini

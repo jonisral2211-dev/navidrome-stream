@@ -1,0 +1,38 @@
+name: navidrome_stream
+description: Cliente móvil para Navidrome (API Subsonic) con reproducción en segundo plano y descargas offline.
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Audio y segundo plano
+  just_audio: ^0.9.40
+  audio_service: ^0.18.15
+  audio_session: ^0.1.21
+
+  # Estado
+  flutter_riverpod: ^2.6.1
+
+  # Persistencia, descargas y red
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  path_provider: ^2.1.4
+  dio: ^5.7.0
+  flutter_secure_storage: ^9.2.2
+  crypto: ^3.0.5
+
+  # UI
+  cached_network_image: ^3.4.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

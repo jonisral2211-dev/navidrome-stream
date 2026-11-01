@@ -1,0 +1,17 @@
+name: navidrome
+
+services:
+  navidrome:
+    image: deluan/navidrome:latest
+    container_name: navidrome
+    restart: unless-stopped
+    ports:
+      - "4533:4533"
+    environment:
+      ND_SCANSCHEDULE: 1h          # reescanea la carpeta de música cada hora
+      ND_LOGLEVEL: info
+      ND_SESSIONTIMEOUT: 24h
+    volumes:
+      - ./data:/data               # base de datos SQLite (metadatos, usuarios, favoritos, playlists)
+      - ${MUSIC_PATH}:/music:ro    # tu biblioteca, montada en solo lectura
+    mem_limit: 512m

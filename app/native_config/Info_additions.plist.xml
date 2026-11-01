@@ -1,0 +1,14 @@
+<!-- ios/Runner/Info.plist: añadir dentro de <dict> -->
+
+<!-- Reproducción en segundo plano -->
+<key>UIBackgroundModes</key>
+<array>
+    <string>audio</string>
+</array>
+
+<!-- Permite http:// hacia la IP de Tailscale. Si usas HTTPS con `tailscale serve`, no hace falta. -->
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>

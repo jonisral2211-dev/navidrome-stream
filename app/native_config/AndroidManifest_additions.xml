@@ -1,0 +1,37 @@
+<!-- android/app/src/main/AndroidManifest.xml -->
+
+<!-- 1) Dentro de <manifest>, antes de <application> -->
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.WAKE_LOCK"/>
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"/>
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+<!-- 2) En <application>: permite http:// (IP de Tailscale sin HTTPS).
+     Si usas `tailscale serve` con HTTPS, puedes quitar esta línea. -->
+<application
+    android:usesCleartextTraffic="true"
+    ...>
+
+    <!-- 3) Servicio de audio en primer plano (audio_service) -->
+    <service
+        android:name="com.ryanheise.audioservice.AudioService"
+        android:foregroundServiceType="mediaPlayback"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.media.browse.MediaBrowserService"/>
+        </intent-filter>
+    </service>
+
+    <receiver
+        android:name="com.ryanheise.audioservice.MediaButtonReceiver"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MEDIA_BUTTON"/>
+        </intent-filter>
+    </receiver>
+
+    <!-- 4) La actividad principal debe heredar de AudioServiceActivity
+         (MainActivity.kt):
+         class MainActivity : com.ryanheise.audioservice.AudioServiceActivity() -->
+</application>
